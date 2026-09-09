@@ -1,0 +1,51 @@
+/* Power Menu - Centered Dialog */
+@import "base.rasi"
+
+configuration {
+    show-icons: false;
+}
+
+window {
+    width: 28%;
+    border-radius: 20px;
+    location: center;
+    anchor: center;
+    y-offset: 0;
+}
+
+mainbox {
+    orientation: vertical;
+    children: [message, listview];
+    spacing: 0;
+}
+
+inputbar {
+    enabled: false;
+}
+
+message {
+    padding: 24px 24px 10px 24px;
+}
+
+textbox {
+    content: " Power Menu";
+    text-color: #e57373;
+    font: "JetBrainsMono Nerd Font Mono Bold 15";
+    horizontal-align: 0.5;
+}
+
+listview {
+    lines: 3;
+    padding: 10px 24px 24px 24px;
+    spacing: 8px;
+}
+
+element {
+    padding: 14px 18px;
+    border-radius: 12px;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    font: "JetBrainsMono Nerd Font Mono 14";
+}

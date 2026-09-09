@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Tmux Sessionizer - Quickly jump between projects in Tmux using FZF
+# Usage:
+# Run `tmux-sessionizer` to select a project via fzf.
+# It will either create a new tmux session named after the folder, or attach to the existing one.
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # Customize the directories here depending on where you store code
+    selected=$(find ~/ ~/.config ~/.local/share -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+# Sanitize the folder name to be a valid tmux session name
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+# If tmux is not running at all, start it and attach to the new session
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+# If the session doesn't exist yet, create it in the background
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+# Switch to the session (different command depending on if we are already INSIDE tmux)
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t $selected_name
+else
+    tmux switch-client -t $selected_name
+fi

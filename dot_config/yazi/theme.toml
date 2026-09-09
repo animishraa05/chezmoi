@@ -1,0 +1,147 @@
+[app]
+overall = { bg = "#1F1F28" }
+
+[mgr]
+cwd = { fg = "#7E9CD8", italic = true }
+find_keyword = { fg = "#C0A36E", bold = true, italic = true, underline = true }
+find_position = { fg = "#957FB8", bg = "reset", bold = true, italic = true }
+symlink_target = { italic = true, fg = "#6A9589" }
+
+marker_copied = { fg = "#76946A", bg = "#76946A" }
+marker_cut = { fg = "#C34043", bg = "#C34043" }
+marker_marked = { fg = "#6A9589", bg = "#6A9589" }
+marker_selected = { fg = "#C0A36E", bg = "#C0A36E" }
+marker_symbol = "│"
+
+count_copied = { fg = "#1F1F28", bg = "#76946A" }
+count_cut = { fg = "#1F1F28", bg = "#C34043" }
+count_selected = { fg = "#1F1F28", bg = "#C0A36E" }
+
+border_symbol = "│"
+border_style = { fg = "#54546D" }
+
+[tabs]
+active = { fg = "#1F1F28", bg = "#7E9CD8", bold = true }
+inactive = { fg = "#DCD7BA", bg = "#2A2A37" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#1F1F28", bg = "#7E9CD8", bold = true }
+normal_alt = { fg = "#7E9CD8", bg = "#2A2A37" }
+select_main = { fg = "#1F1F28", bg = "#C34043", bold = true }
+select_alt = { fg = "#C34043", bg = "#2A2A37" }
+unset_main = { fg = "#1F1F28", bg = "#957FB8", bold = true }
+unset_alt = { fg = "#957FB8", bg = "#2A2A37" }
+
+[indicator]
+parent = { reversed = true }
+current = { reversed = true }
+preview = { underline = true }
+padding = { open = "", close = "" }
+
+[status]
+overall = {}
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+perm_sep = { fg = "#54546D" }
+perm_type = { fg = "#7E9CD8" }
+perm_read = { fg = "#C0A36E" }
+perm_write = { fg = "#C34043" }
+perm_exec = { fg = "#76946A" }
+progress_label = { bold = true, fg = "#DCD7BA" }
+progress_normal = { fg = "#76946A", bg = "#2A2A37" }
+progress_error = { fg = "#C34043", bg = "#2A2A37" }
+
+[which]
+cols = 3
+mask = { bg = "#16161D" }
+cand = { fg = "#6A9589" }
+rest = { fg = "#727169" }
+desc = { fg = "#957FB8" }
+separator = "  "
+separator_style = { fg = "#54546D" }
+
+[confirm]
+border = { fg = "#7E9CD8" }
+title = { fg = "#7E9CD8" }
+body = { fg = "#DCD7BA" }
+list = {}
+btn_yes = { reversed = true }
+btn_no = {}
+btn_labels = ["  [Y]es  ", "  (N)o  "]
+
+[spot]
+border = { fg = "#7E9CD8" }
+title = { fg = "#7E9CD8" }
+tbl_col = { fg = "#7E9CD8" }
+tbl_cell = { fg = "#C0A36E", reversed = true }
+
+[notify]
+title_info = { fg = "#76946A" }
+title_warn = { fg = "#C0A36E" }
+title_error = { fg = "#C34043" }
+icon_info = ""
+icon_warn = ""
+icon_error = ""
+
+[pick]
+border = { fg = "#7E9CD8" }
+active = { fg = "#957FB8", bold = true }
+inactive = { fg = "#727169" }
+
+[input]
+border = { fg = "#7E9CD8" }
+title = {}
+value = { fg = "#DCD7BA" }
+selected = { reversed = true }
+
+[cmp]
+border = { fg = "#7E9CD8" }
+active = { fg = "#1F1F28", bg = "#DCD7BA", bold = true }
+inactive = { fg = "#727169" }
+icon_file = ""
+icon_folder = ""
+icon_command = ""
+
+[tasks]
+border = { fg = "#7E9CD8" }
+title = {}
+hovered = { fg = "#957FB8", bold = true }
+
+[help]
+on = { fg = "#6A9589" }
+run = { fg = "#957FB8" }
+desc = { fg = "#DCD7BA" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "#16161D", bg = "#DCD7BA" }
+
+[filetype]
+rules = [
+	{ mime = "image/*", fg = "#FFA066" },
+	{ mime = "{audio,video}/*", fg = "#957FB8" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#C34043" },
+	{ mime = "application/{pdf,doc,rtf}", fg = "#6A9589" },
+	{ mime = "vfs/{absent,stale}", fg = "#727169" },
+	{ url = "*", is = "orphan", bg = "#C34043" },
+	{ url = "*", is = "exec", fg = "#76946A" },
+	{ url = "*", is = "dummy", bg = "#C34043" },
+	{ url = "*/", is = "dummy", bg = "#C34043" },
+	{ url = "*/", fg = "#7E9CD8" },
+]
+
+[icon]
+dirs = [
+	{ name = ".git", text = "", fg = "#C34043" },
+	{ name = ".config", text = "", fg = "#FFA066" },
+	{ name = ".github", text = "", fg = "#7E9CD8" },
+	{ name = "Desktop", text = "", fg = "#6A9589" },
+	{ name = "Documents", text = "", fg = "#6A9589" },
+	{ name = "Downloads", text = "", fg = "#C0A36E" },
+	{ name = "Music", text = "", fg = "#957FB8" },
+	{ name = "Pictures", text = "", fg = "#FFA066" },
+	{ name = "Videos", text = "", fg = "#C34043" },
+]
+
+[flavor]
+use = "kanagawa"

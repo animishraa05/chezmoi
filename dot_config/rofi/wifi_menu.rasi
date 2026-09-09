@@ -1,0 +1,56 @@
+/* WiFi Menu - Centered Dialog */
+@import "base.rasi"
+
+configuration {
+    show-icons: false;
+}
+
+window {
+    width: 38%;
+    border-radius: 20px;
+    location: center;
+    anchor: center;
+    y-offset: 0;
+}
+
+mainbox {
+    orientation: vertical;
+    children: [inputbar, message, listview];
+}
+
+inputbar {
+    padding: 20px 24px 8px 24px;
+}
+
+prompt {
+    text-color: #ffb74d;
+    content: " ";
+}
+
+message {
+    orientation: vertical;
+    background-color: transparent;
+    padding: 8px 24px;
+}
+
+textbox {
+    content: "Select WiFi Network";
+    text-color: #d4e7c5;
+    font: "JetBrainsMono Nerd Font Mono 13";
+    horizontal-align: 0.5;
+}
+
+listview {
+    lines: 8;
+    padding: 0px 24px 20px 24px;
+    spacing: 4px;
+}
+
+element {
+    padding: 14px 18px;
+    border-radius: 12px;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font Mono 14";
+}

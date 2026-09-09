@@ -1,0 +1,232 @@
+# Starship config - minimal & fast
+command_timeout = 300
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$character"""
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold white"
+
+[git_branch]
+format = " [$symbol$branch]($style)"
+style = "bold black"
+truncation_length = 12
+
+[git_status]
+conflicted = "🏳"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+staged = "●${count}"
+modified = "✱${count}"
+stashed = "⚑"
+deleted = "✗${count}"
+renamed = "➡${count}"
+untracked = "?${count}"
+ignore_submodules = true
+format = " [\\($all_status$ahead_behind\\)]($style)"
+style = "bold black"
+disabled = false
+
+[character]
+success_symbol = "[❯](bold white)"
+error_symbol = "[❯](bold black)"
+
+# Disable slow/unused modules
+[aws]
+disabled = true
+
+[azure]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[env_var]
+disabled = true
+
+[erlang]
+disabled = true
+
+[fennel]
+disabled = true
+
+[fill]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[gleam]
+disabled = true
+
+[golang]
+disabled = true
+
+[gradle]
+disabled = true
+
+[guix_shell]
+disabled = true
+
+[haskell]
+disabled = true
+
+[haxe]
+disabled = true
+
+[helm]
+disabled = true
+
+[hostname]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[lua]
+disabled = true
+
+[meson]
+disabled = true
+
+[mojo]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[opa]
+disabled = true
+
+[openstack]
+disabled = true
+
+[os]
+disabled = true
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pijul_channel]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[quarto]
+disabled = true
+
+[raku]
+disabled = true
+
+[red]
+disabled = true
+
+[rlang]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[shell]
+disabled = true
+
+[shlvl]
+disabled = true
+
+[singularity]
+disabled = true
+
+[status]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[time]
+disabled = true
+
+
+
+[typst]
+disabled = true
+
+[username]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true

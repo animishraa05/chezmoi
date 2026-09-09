@@ -1,0 +1,65 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = 350
+    height = (0, 150)
+    origin = top-right
+    offset = (10, 10)
+    scale = 0
+    notification_limit = 5
+    progress_bar = true
+    progress_bar_height = 6
+    progress_bar_frame_width = 0
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    separator_height = 2
+    padding = 16
+    horizontal_padding = 16
+    text_icon_padding = 8
+    frame_width = 1
+    frame_color = "#444444"
+    gap_size = 4
+    separator_color = frame
+    sort = yes
+    font = "JetBrainsMono Nerd Font 10"
+    line_height = 4
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = false
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = true
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    icon_path = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/
+    sticky_history = yes
+    history_length = 20
+    browser = /usr/bin/firefox
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 8
+    ignore_dbusclose = false
+    force_xwayland = false
+[urgency_low]
+    background = "#000000"
+    foreground = "#ffffff"
+    timeout = 5
+    highlight = "#888888"
+
+[urgency_normal]
+    background = "#000000"
+    foreground = "#ffffff"
+    timeout = 8
+    highlight = "#aaaaaa"
+
+[urgency_critical]
+    background = "#ffffff"
+    foreground = "#000000"
+    timeout = 0
+    highlight = "#000000"

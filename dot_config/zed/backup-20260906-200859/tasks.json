@@ -1,0 +1,208 @@
+[
+  {
+    "label": "Java: Run Current File",
+    "command": "mkdir -p /tmp/zed-java && javac -d /tmp/zed-java \"$ZED_FILE\" && package=$(sed -n 's/^[[:space:]]*package[[:space:]]\\+\\([^;]*\\);.*/\\1/p' \"$ZED_FILE\" | head -n 1) && if [ -n \"$package\" ]; then java -cp /tmp/zed-java \"$package.$ZED_STEM\"; else java -cp /tmp/zed-java \"$ZED_STEM\"; fi",
+    "cwd": "$ZED_DIRNAME",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "current",
+    "reevaluate_context": true
+  },
+
+  {
+    "label": "Java: Compile Current File",
+    "command": "mkdir -p /tmp/zed-java && javac -Xdiags:verbose -Xlint:all -d /tmp/zed-java \"$ZED_FILE\"",
+    "cwd": "$ZED_DIRNAME",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "current",
+    "reevaluate_context": true
+  },
+
+  {
+    "label": "Java: Run Current File (Detailed Errors)",
+    "command": "mkdir -p /tmp/zed-java && javac -Xdiags:verbose -d /tmp/zed-java \"$ZED_FILE\" && package=$(sed -n 's/^[[:space:]]*package[[:space:]]\\+\\([^;]*\\);.*/\\1/p' \"$ZED_FILE\" | head -n 1) && if [ -n \"$package\" ]; then java -cp /tmp/zed-java \"$package.$ZED_STEM\"; else java -cp /tmp/zed-java \"$ZED_STEM\"; fi",
+    "cwd": "$ZED_DIRNAME",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "current",
+    "reevaluate_context": true
+  },
+
+  {
+    "label": "Java: Clean Temporary Build",
+    "command": "rm -rf /tmp/zed-java",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  {
+    "label": "Maven: Compile",
+    "command": "mvn compile",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Maven: Test",
+    "command": "mvn test",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Maven: Package",
+    "command": "mvn package",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Maven: Clean",
+    "command": "mvn clean",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Maven: Clean Package",
+    "command": "mvn clean package",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Maven: Verify",
+    "command": "mvn verify",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Maven: Dependency Tree",
+    "command": "mvn dependency:tree",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  {
+    "label": "Maven: Spring Boot Run",
+    "command": "mvn spring-boot:run",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Compile",
+    "command": "./gradlew compileJava",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Test",
+    "command": "./gradlew test",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Build",
+    "command": "./gradlew build",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Clean",
+    "command": "./gradlew clean",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Clean Build",
+    "command": "./gradlew clean build",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Check",
+    "command": "./gradlew check",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Gradle: Dependencies",
+    "command": "./gradlew dependencies",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  {
+    "label": "Gradle: Spring Boot Run",
+    "command": "./gradlew bootRun",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "save": "all"
+  },
+
+  {
+    "label": "Java: Check Version",
+    "command": "java -version",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  {
+    "label": "Java: Check Compiler",
+    "command": "javac -version",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  {
+    "label": "Maven: Version",
+    "command": "mvn -version",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+
+  {
+    "label": "Gradle: Version",
+    "command": "gradle --version",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  }
+]

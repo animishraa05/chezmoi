@@ -1,0 +1,27 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-r": [
+        "task::Spawn",
+        {
+          "task_name": "Java: Run Current File"
+        }
+      ],
+
+      "ctrl-shift-b": [
+        "task::Spawn",
+        {
+          "task_name": "Java: Compile Current File"
+        }
+      ],
+
+      "ctrl-shift-t": [
+        "task::Spawn",
+        {
+          "task_name": "Maven: Test"
+        }
+      ]
+    }
+  }
+]

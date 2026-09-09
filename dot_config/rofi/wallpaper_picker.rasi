@@ -1,0 +1,157 @@
+/* Wallpaper Picker Rofi Theme - Visual Grid Layout */
+@import "base.rasi"
+
+* {
+    /* Grid Configuration */
+    thumbnail-size: 700px;
+    columns: 1;
+    lines: 1;
+}
+
+window {
+    width: 850px;
+    border-radius: 20px;
+    location: north;
+    anchor: north;
+    y-offset: 80px;
+}
+
+mainbox {
+    enabled: true;
+    orientation: vertical;
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 0;
+}
+
+inputbar {
+    enabled: true;
+    orientation: horizontal;
+    background-color: transparent;
+    padding: 18px 20px 14px 20px;
+    children: [prompt, entry];
+    spacing: 10px;
+}
+
+prompt {
+    enabled: true;
+    background-color: @bg-alt;
+    padding: 10px 16px;
+    border-radius: 12px;
+    text-color: @accent;
+    font: @font-bold;
+}
+
+entry {
+    enabled: true;
+    background-color: @bg-alt;
+    padding: 10px 16px;
+    border-radius: 12px;
+    text-color: @fg;
+    font: @font;
+    placeholder: "Search wallpapers...";
+    placeholder-color: @fg-alt;
+    cursor: "text";
+}
+
+listview {
+    enabled: true;
+    background-color: transparent;
+    padding: 8px 16px 16px 16px;
+    columns: @columns;
+    lines: @lines;
+    fixed-height: false;
+    dynamic: true;
+    scrollbar: false;
+    spacing: 12px;
+    layout: vertical;
+    reverse: false;
+    cycle: true;
+    flow: horizontal;
+}
+
+element {
+    enabled: true;
+    padding: 8px;
+    border-radius: 12px;
+    spacing: 8px;
+    orientation: vertical;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font Mono 11";
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    lines: 2;
+    strikethrough: false;
+}
+
+element-icon {
+    background-color: transparent;
+    size: @thumbnail-size;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color: #e57373;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color: #6abf69;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: #d4e7c5;
+    border: 0px;
+    border-color: @accent;
+}
+
+element selected.urgent {
+    background-color: @selected;
+    text-color: #e57373;
+    border: 2px;
+    border-color: #FF7575;
+}
+
+element selected.active {
+    background-color: @selected;
+    text-color: #6abf69;
+    border: 2px;
+    border-color: #96F7C8;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+message {
+    background-color: transparent;
+    padding: 0;
+}
+
+textbox {
+    background-color: transparent;
+    padding: 14px 24px;
+    text-color: @fg;
+    font: @font;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+scrollbar {
+    enabled: false;
+    handle-width: 4px;
+    handle-color: @fg-alt;
+}

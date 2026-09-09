@@ -1,0 +1,53 @@
+/* Main App Launcher - Minimal */
+@import "base.rasi"
+
+configuration {
+    show-icons: false;
+    terminal: "kitty";
+    drun-display-format: "{name}";
+    disable-history: false;
+}
+
+window {
+    width: 25%;
+    border-radius: 0px;
+}
+
+mainbox {
+    orientation: vertical;
+    children: [inputbar, listview];
+    spacing: 0;
+}
+
+inputbar {
+    padding: 22px 24px 10px 24px;
+    background-color: transparent;
+    children: [prompt, entry];
+    spacing: 14px;
+}
+
+prompt {
+    text-color: @accent;
+    content: " ";
+}
+
+entry {
+    placeholder: "";
+    font: "JetBrainsMono Nerd Font Mono 15";
+}
+
+listview {
+    lines: 5;
+    padding: 6px 24px 20px 24px;
+    spacing: 6px;
+    columns: 1;
+}
+
+element {
+    padding: 12px 18px;
+    border-radius: 0px;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font Mono 14";
+}
