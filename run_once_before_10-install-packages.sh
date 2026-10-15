@@ -11,16 +11,19 @@ set -euo pipefail
 
 PACKAGES=(
     # --- Core / session ---
-    i3
+    i3-wm                   # the WM binary is /usr/bin/i3, package is i3-wm
+    lightdm                 # login manager; without this there is no way in
+    lightdm-gtk-greeter     # greeter lightdm uses
     xorg-xinit
+    xorg-server
     xorg-xrandr
     xorg-xset
     xorg-xinput
-    xorg-server
     xorg-xdpyinfo
     xorg-xprop
     xorg-xkill
-    xorg-xcursor-themes
+    adwaita-cursors
+    adwaita-icon-theme
 
     # --- Shell & terminal ---
     fish
@@ -30,12 +33,18 @@ PACKAGES=(
     git
     tmux
     fisher
+    neovim                  # nvim/ is managed by chezmoi; this is the binary
+    jq                      # parsed by i3/scripts/smart-kill.sh (mod+q)
+    man-db
+    man-pages
 
     # --- Fonts ---
     ttf-jetbrains-mono-nerd
 
     # --- Status bar / panels ---
     polybar
+    i3blocks
+    i3status
     rofi
     dunst
     picom
@@ -54,6 +63,21 @@ PACKAGES=(
     lazygit
     fastfetch
     feh
+    eza
+    bat
+    fd
+    ripgrep
+    zoxide
+
+    # --- Hardware / desktop integration ---
+    blueman                 # bluetooth tray + applet
+    bluez-utils
+    easyeffects             # audio effects (pipewire)
+    gst-plugin-pipewire
+    libva-intel-driver
+    intel-media-driver
+    inotify-tools
+    gvfs-mtp                # phone file access over MTP
 
     # --- Optional (uncomment to install) ---
     # brightnessctl           # backlight; skip on desktops without one
@@ -62,6 +86,10 @@ PACKAGES=(
     # variety                 # wallpaper rotation
     # nm-applet               # network tray applet
     # alacritty               # alternative terminal
+    # flatpak                 # Flatpak apps
+    # cava                    # audio visualiser
+    # flameshot               # screenshot tool
+    # htop
 )
 
 missing=()
