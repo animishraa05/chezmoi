@@ -23,7 +23,7 @@ inputbar {
 }
 
 prompt {
-    text-color: #ffb74d;
+    text-color: #f3be7c;
     content: " ";
 }
 
@@ -35,7 +35,7 @@ message {
 
 textbox {
     content: "Select WiFi Network";
-    text-color: #d4e7c5;
+    text-color: #cdcdcd;
     font: "JetBrainsMono Nerd Font Mono 13";
     horizontal-align: 0.5;
 }

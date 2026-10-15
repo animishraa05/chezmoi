@@ -1,0 +1,12 @@
+LEADER_KEY=" "
+SCREENSHORT_DIR=/home/ani/Pictures/Captures/
+DOWNLOAD_DIR=/home/ani/Downloads/
+TERMINAL=kitty
+EDITOR=nvim
+GITHUB_USERNAME=animishraa05
+HOMEPAGE=https://duckduckgo.com/
+FONT_FAMILY="JetBrainsMono Nerd Font Mono"
+FONT_SIZE=17
+CANVAS=true
+WEBGL=true
+DARKMODE=true

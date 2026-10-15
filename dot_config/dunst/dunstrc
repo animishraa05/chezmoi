@@ -17,7 +17,7 @@
     horizontal_padding = 16
     text_icon_padding = 8
     frame_width = 1
-    frame_color = "#444444"
+    frame_color = "#7e98e8"
     gap_size = 4
     separator_color = frame
     sort = yes
@@ -47,19 +47,19 @@
     ignore_dbusclose = false
     force_xwayland = false
 [urgency_low]
-    background = "#000000"
-    foreground = "#ffffff"
+    background = "#1c1c24"
+    foreground = "#cdcdcd"
     timeout = 5
-    highlight = "#888888"
+    highlight = "#606079"
 
 [urgency_normal]
-    background = "#000000"
-    foreground = "#ffffff"
+    background = "#141415"
+    foreground = "#cdcdcd"
     timeout = 8
-    highlight = "#aaaaaa"
+    highlight = "#7e98e8"
 
 [urgency_critical]
-    background = "#ffffff"
-    foreground = "#000000"
+    background = "#7e98e8"
+    foreground = "#141415"
     timeout = 0
-    highlight = "#000000"
+    highlight = "#d8647e"

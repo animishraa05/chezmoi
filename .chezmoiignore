@@ -1,0 +1,4 @@
+# qutebrowser: nested git repo - tracked in animishraa05/qutebrowser-config
+.config/qutebrowser/.git/**
+.config/qutebrowser/.env
+**/__pycache__/**

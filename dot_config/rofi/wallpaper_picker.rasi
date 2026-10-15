@@ -102,33 +102,33 @@ element normal.normal {
 
 element normal.urgent {
     background-color: transparent;
-    text-color: #e57373;
+    text-color: #d8647e;
 }
 
 element normal.active {
     background-color: transparent;
-    text-color: #6abf69;
+    text-color: #7fa563;
 }
 
 element selected.normal {
     background-color: @selected;
-    text-color: #d4e7c5;
+    text-color: #cdcdcd;
     border: 0px;
     border-color: @accent;
 }
 
 element selected.urgent {
     background-color: @selected;
-    text-color: #e57373;
+    text-color: #d8647e;
     border: 2px;
-    border-color: #FF7575;
+    border-color: #d8647e;
 }
 
 element selected.active {
     background-color: @selected;
-    text-color: #6abf69;
+    text-color: #7fa563;
     border: 2px;
-    border-color: #96F7C8;
+    border-color: #6a9589;
 }
 
 element alternate.normal {

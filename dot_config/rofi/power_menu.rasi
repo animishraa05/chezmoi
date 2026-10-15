@@ -29,7 +29,7 @@ message {
 
 textbox {
     content: " Power Menu";
-    text-color: #e57373;
+    text-color: #d8647e;
     font: "JetBrainsMono Nerd Font Mono Bold 15";
     horizontal-align: 0.5;
 }

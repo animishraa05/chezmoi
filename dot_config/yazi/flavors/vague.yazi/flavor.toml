@@ -1,0 +1,127 @@
+## Vague flavor for yazi
+## Palette sourced from nvim colorschemes.lua -> require('vague').setup()
+
+[app]
+overall = { bg = "#141415" }
+
+[mgr]
+marker_copied = { fg = "#7fa563", bg = "#7fa563" }
+marker_cut = { fg = "#d8647e", bg = "#d8647e" }
+marker_marked = { fg = "#6a9589", bg = "#6a9589" }
+marker_selected = { fg = "#f3be7c", bg = "#f3be7c" }
+
+cwd = { fg = "#7e98e8", italic = true }
+
+find_keyword = { fg = "#f3be7c", bg = "#141415", bold = true, italic = true, underline = true }
+find_position = { fg = "#bb9dbd", bold = true, italic = true }
+
+symlink_target = { italic = true, fg = "#6a9589" }
+
+count_copied = { fg = "#141415", bg = "#7fa563" }
+count_cut = { fg = "#141415", bg = "#d8647e" }
+count_selected = { fg = "#141415", bg = "#f3be7c" }
+
+border_symbol = "│"
+border_style = { fg = "#606079" }
+
+[indicator]
+parent = { reversed = true }
+current = { reversed = true }
+preview = { reversed = true }
+
+[tabs]
+active = { fg = "#141415", bg = "#7e98e8" }
+inactive = { fg = "#cdcdcd", bg = "#1c1c24" }
+
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#141415", bg = "#7e98e8" }
+normal_alt = { fg = "#7e98e8", bg = "#1c1c24" }
+select_main = { fg = "#141415", bg = "#d8647e" }
+select_alt = { fg = "#d8647e", bg = "#1c1c24" }
+unset_main = { fg = "#141415", bg = "#f3be7c" }
+unset_alt = { fg = "#f3be7c", bg = "#1c1c24" }
+
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+overall = { fg = "#cdcdcd", bg = "#1c1c24" }
+
+progress_label = { fg = "#7e98e8", bold = true }
+progress_normal = { fg = "#7fa563", bg = "#141415" }
+progress_error = { fg = "#d8647e", bg = "#141415" }
+
+perm_type = { fg = "#7fa563" }
+perm_read = { fg = "#f3be7c" }
+perm_write = { fg = "#d8647e" }
+perm_exec = { fg = "#6a9589" }
+perm_sep = { fg = "#bb9dbd" }
+
+[pick]
+border = { fg = "#7e98e8" }
+active = { fg = "#bb9dbd", bold = true }
+inactive = {}
+
+[input]
+border = { fg = "#7e98e8" }
+title = {}
+value = { fg = "#cdcdcd" }
+selected = { reversed = true }
+
+[completion]
+border = { fg = "#7e98e8" }
+active = { reversed = true }
+inactive = {}
+
+[tasks]
+border = { fg = "#7e98e8" }
+title = {}
+hovered = { fg = "#bb9dbd" }
+
+[which]
+cols = 2
+separator = " - "
+separator_style = { fg = "#606079" }
+mask = { bg = "#1c1c24" }
+rest = { fg = "#606079" }
+cand = { fg = "#7e98e8" }
+desc = { fg = "#606079" }
+
+[help]
+on = { fg = "#6a9589" }
+run = { fg = "#bb9dbd" }
+desc = { fg = "#cdcdcd" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "#141415", bg = "#cdcdcd" }
+
+[notify]
+title_info = { fg = "#7fa563" }
+title_warn = { fg = "#f3be7c" }
+title_error = { fg = "#d8647e" }
+
+[filetype]
+rules = [
+    # images
+    { mime = "image/*", fg = "#e0a363" },
+
+    # media
+    { mime = "{audio,video}/*", fg = "#bb9dbd" },
+
+    # archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#d8647e" },
+
+    # documents
+    { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#6a9589" },
+
+    # broken links
+    { url = "*", is = "orphan", fg = "#d8647e" },
+
+    # executables
+    { url = "*", is = "exec", fg = "#7fa563" },
+
+    # fallback
+    { url = "*", fg = "#cdcdcd" },
+    { url = "*/", fg = "#7e98e8" },
+]

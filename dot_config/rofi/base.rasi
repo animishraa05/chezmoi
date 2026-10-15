@@ -1,15 +1,15 @@
-/* Base Rofi Theme - Evergreen Pine */
+/* Base Rofi Theme - Vague */
 /* Floating top-panel with left-accent selection */
 
 * {
-    /* Colors - Monochrome Black & White */
-    bg:         #000000;
-    bg-alt:     #111111;
-    fg:         #ffffff;
-    fg-alt:     #888888;
-    accent:     #ffffff;
-    selected:   #222222;
-    border:     #444444;
+    /* Colors - Vague */
+    bg:         #141415;
+    bg-alt:     #1c1c24;
+    fg:         #cdcdcd;
+    fg-alt:     #606079;
+    accent:     #7e98e8;
+    selected:   #7e98e8;
+    border:     #7e98e8;
 
     /* Typography - Bold & Readable */
     font: "JetBrainsMono Nerd Font Mono 14";
@@ -118,12 +118,12 @@ element normal.normal {
 
 element normal.urgent {
     background-color: transparent;
-    text-color: #aaaaaa;
+    text-color: #f3be7c;
 }
 
 element normal.active {
     background-color: transparent;
-    text-color: #ffffff;
+    text-color: #cdcdcd;
 }
 
 element selected.normal {
@@ -189,5 +189,5 @@ button {
 
 button selected.normal {
     background-color: @selected;
-    text-color: #ffffff;
+    text-color: @bg;
 }

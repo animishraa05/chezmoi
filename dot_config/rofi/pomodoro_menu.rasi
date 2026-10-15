@@ -24,7 +24,7 @@ inputbar {
 }
 
 prompt {
-    text-color: #6abf69;
+    text-color: #7fa563;
     content: "󱎫 ";
 }
 
@@ -34,7 +34,7 @@ message {
 
 textbox {
     content: "Pomodoro Timer";
-    text-color: #d4e7c5;
+    text-color: #cdcdcd;
     font: "JetBrainsMono Nerd Font Mono 13";
     horizontal-align: 0.5;
 }
