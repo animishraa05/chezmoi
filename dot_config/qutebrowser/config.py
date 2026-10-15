@@ -180,7 +180,14 @@ config.bind("L", "tab-next")
 config.bind("Q", "tab-close")
 
 # Zoom - matches kitty.conf (ctrl+shift+equal / minus / backspace)
+#
+# With a US layout, Shift+= actually produces "+" and Shift+- produces "_",
+# so Qt reports Key_Plus / Key_Underscore - not Key_Equal / Key_Minus. Bind
+# the shifted characters, and keep the unshifted ones as fallbacks in case a
+# different layout reports the unshifted keys.
+config.bind("<Ctrl-Shift-+>", "zoom-in")
 config.bind("<Ctrl-Shift-=>", "zoom-in")
+config.bind("<Ctrl-Shift-_>", "zoom-out")
 config.bind("<Ctrl-Shift-->", "zoom-out")
 config.bind("<Ctrl-Shift-Backspace>", "zoom")
 
