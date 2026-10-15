@@ -1,0 +1,6 @@
+# Python bytecode is never part of a dotfiles repo. chezmoi's .chezmoiignore
+# only stops `chezmoi add` from copying these in; git needs its own rule
+# because `git add -A` in the source directory would otherwise commit them.
+__pycache__/
+*.py[cod]
+*.egg-info/
