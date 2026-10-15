@@ -8,8 +8,10 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # Customize the directories here depending on where you store code
-    selected=$(find ~/ ~/.config ~/.local/share -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+    # Use fd to instantly find all Git repositories up to 4 levels deep, plus some common config dirs
+    git_repos=$(fd -H -I -t d '^\\.git$' ~ --max-depth 4 -E '.cache' -E '.local' -E '.cargo' -E '.rustup' -E '.npm' -E '.steam' -E '.var' -E 'Downloads' -x dirname {})
+    config_dirs=$(find ~/.config -mindepth 1 -maxdepth 1 -type d)
+    selected=$(printf "%s\n%s\n%s\n" "$git_repos" "$config_dirs" "$HOME" | sort -u | fzf)
 fi
 
 if [[ -z $selected ]]; then

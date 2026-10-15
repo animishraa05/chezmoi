@@ -72,17 +72,12 @@
 | Click on tab | Switch to that buffer |
 | Right-click on tab | Close that buffer |
 
-### dashboard-nvim — Start Screen
-**What**: The fancy screen you see when you open Neovim with no file.
+### mini.starter — Quick Palette
+**What**: A searchable action palette. No longer the start screen (oil.nvim is the dashboard now).
 
 | Key | What it does |
 |-----|-------------|
-| `, f f` | Find files (opens Snacks picker) |
-| `, f r` | Recently opened files |
-| `, f g` | Live grep (search text in project) |
-| `, e v` | Open your init.lua config |
-| `e` | New empty file |
-| `q` | Quit Neovim |
+| `<space>ss` | Open the mini.starter palette |
 
 ### nvim-notify
 **What**: Replaces the default `vim.notify()` with prettier animated notifications. Messages fade in and slide out.
@@ -155,15 +150,18 @@ Example: `gcap` = comment out the current paragraph.
 
 ## 4. Navigation & File Management
 
-### oil.nvim — File Explorer
-**What**: A modern file explorer that opens the parent directory as a regular buffer you can edit.
+### oil.nvim — File Explorer & Dashboard
+**What**: A modern file explorer that opens the parent directory as a regular buffer you can edit. It is also the **default dashboard**: start Neovim with no file argument and the cwd listing is shown automatically.
 
 | Key | What it does |
 |-----|-------------|
 | `-` | Open parent directory in oil |
+| `<space>e` | Open the oil dashboard for the current working directory |
 | In oil buffer: `Enter` | Open file/directory under cursor |
 | In oil buffer: Edit text | Rename files by editing the filename directly |
 | In oil buffer: `-` | Go up a directory |
+
+Note: the dashboard is skipped when a file/directory is passed to `nvim`, or in headless sessions (`nvim -l`, embedded, CI).
 
 ### harpoon — Quick File Switching (Harpoon 2)
 **What**: "Bookmark" files for instant switching, like hot-keyed bookmarks.
@@ -663,6 +661,7 @@ When your code has errors or warnings:
 | `,f f` | Find file by name |
 | `,f g` | Search text in project (grep) |
 | `-` | Open file explorer (oil) |
+| `<space>e` | Open oil dashboard at cwd |
 | `,gs` | Git status |
 | `,hp` | Preview git hunk |
 | `<F5>` | Toggle breakpoint |

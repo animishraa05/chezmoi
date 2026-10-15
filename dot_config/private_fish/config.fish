@@ -37,6 +37,7 @@ if status is-interactive
     alias du='du -h'
     alias mkdir='mkdir -p'
 
+    alias lz='lazygit'
     # apps
     alias y='yazi'
     alias oc='opencode'
@@ -56,3 +57,7 @@ fish_add_path ~/go/bin
 
 # Added by Antigravity CLI installer
 set -gx PATH "/home/ani/.local/bin" $PATH
+
+# FZF keybindings
+fzf --fish | source
+

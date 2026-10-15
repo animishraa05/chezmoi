@@ -23,6 +23,9 @@ vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/options.vim"))
 require("custom-autocmd")
 -- all the user-defined mappings
 require("mappings")
+-- Custom dynamically generated cheatsheet
+require("cheatsheet").setup()
+
 -- all the plugins installed and their configurations
 vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
 
@@ -33,7 +36,7 @@ require("config.dap")
 -- colorscheme settings
 local color_scheme = require("colorschemes")
 
-color_scheme.colorscheme_conf["kanagawa"]()
+color_scheme.colorscheme_conf["vague"]()
 
 -- Load a random colorscheme
 -- color_scheme.rand_colorscheme()

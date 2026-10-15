@@ -6,3 +6,8 @@
 # Repo documentation, not a file to deploy into $HOME.
 # Without this, chezmoi treats it as a target and wants to write ~/README.md
 README.md
+
+# oil.nvim's symlink farm: "oil:" plus colons in the path confuse
+# chezmoi's dot-prefix parsing and produce a bogus source tree.
+.config/nvim/oil:*
+**/oil:/**

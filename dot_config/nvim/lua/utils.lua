@@ -23,6 +23,9 @@ end
 
 --- Create a dir if it does not exist
 function M.may_create_dir(dir)
+  if not dir or dir == "" or string.match(dir, "^%w+://") or string.match(dir, "^oil:") then
+    return
+  end
   local res = fn.isdirectory(dir)
 
   if res == 0 then

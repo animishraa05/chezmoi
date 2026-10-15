@@ -68,7 +68,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 
 For more UI demos, check the issues page.
 
-## Start screen with dashboard-nvim
+## Start screen with oil.nvim
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/16662357/183256752-fb23b215-a6b8-4646-beed-9999f52d53f1.png" width="800">

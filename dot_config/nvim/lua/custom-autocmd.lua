@@ -50,6 +50,9 @@ api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = "*",
   group = api.nvim_create_augroup("auto_create_dir", { clear = true }),
   callback = function(ctx)
+    if vim.bo[ctx.buf].filetype == "oil" or string.match(ctx.file, "^%w+://") or string.match(ctx.file, "^oil:") then
+      return
+    end
     local dir = fn.fnamemodify(ctx.file, ":p:h")
     utils.may_create_dir(dir)
   end,
@@ -187,6 +190,46 @@ api.nvim_create_autocmd("BufEnter", {
     if should_quit then
       vim.cmd("qall")
     end
+  end,
+})
+
+-- Use oil.nvim as the default dashboard: when Nvim starts without any file argument,
+-- replace the empty buffer with a listing of the current working directory.
+api.nvim_create_autocmd("VimEnter", {
+  group = api.nvim_create_augroup("oil_dashboard", { clear = true }),
+  pattern = "*",
+  desc = "open oil.nvim as the default dashboard",
+  callback = function()
+    -- headless invocations (`nvim -l`, embedded, CI) must stay untouched
+    if #api.nvim_list_uis() == 0 then
+      return
+    end
+
+    -- a file/directory was passed on the command line, respect it
+    if fn.argc() > 0 then
+      return
+    end
+
+    -- only replace a truly empty, unnamed buffer
+    local buf = api.nvim_get_current_buf()
+    local buftype = api.nvim_get_option_value("buftype", { buf = buf })
+    if api.nvim_buf_get_name(buf) ~= "" or buftype ~= "" then
+      return
+    end
+
+    local ok, oil = pcall(require, "oil")
+    if not ok then
+      return
+    end
+
+    -- Defer the open: oil fills the listing asynchronously and wants a settled
+    -- message loop (startup plugins still hold it at VimEnter time).
+    vim.schedule(function()
+      if not api.nvim_buf_is_valid(buf) then
+        return
+      end
+      oil.open(fn.getcwd())
+    end)
   end,
 })
 

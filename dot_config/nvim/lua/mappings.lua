@@ -254,6 +254,13 @@ keymap.set("n", "<leader>ot", "<cmd>ObsidianToday<CR>", { desc = "Today's Obsidi
 
 -- oil.nvim
 keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "open parent directory" })
+keymap.set("n", "<leader>e", function()
+  if vim.fn.isdirectory(vim.api.nvim_buf_get_name(0)) then
+    vim.cmd("Oil")
+  else
+    require("oil").open(vim.fn.getcwd())
+  end
+end, { desc = "open oil dashboard (cwd)" })
 
 -- harpoon
 local harpoon_ok, harpoon = pcall(require, "harpoon")

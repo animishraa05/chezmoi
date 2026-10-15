@@ -79,17 +79,25 @@ PACKAGES=(
     inotify-tools
     gvfs-mtp                # phone file access over MTP
 
-    # --- Optional (uncomment to install) ---
-    # brightnessctl           # backlight; skip on desktops without one
-    # upower                  # power/battery reporting
-    # betterlockscreen        # lock screen bound to mod+shift+x
-    # variety                 # wallpaper rotation
-    # nm-applet               # network tray applet
-    # alacritty               # alternative terminal
-    # flatpak                 # Flatpak apps
-    # cava                    # audio visualiser
-    # flameshot               # screenshot tool
-    # htop
+    # --- Desktop integration ---
+    brightnessctl           # backlight; harmless on machines without one
+    upower                  # power/battery reporting
+    network-manager-applet  # NOT "nm-applet" - that is the binary name
+    variety                 # wallpaper rotation
+    htop
+
+    # --- Optional extras ---
+    alacritty               # alternative terminal
+    flatpak                 # Flatpak apps
+    cava                    # audio visualiser
+    flameshot               # screenshot tool
+)
+
+# --- AUR-only packages ---
+# Not in the official repos, so they cannot go in the list above.
+# betterlockscreen is bound to mod+shift+x in i3/keymaps.conf.
+AUR_PACKAGES=(
+    betterlockscreen
 )
 
 missing=()
@@ -97,25 +105,48 @@ for pkg in "${PACKAGES[@]}"; do
     pacman -Qi "$pkg" &>/dev/null || missing+=("$pkg")
 done
 
-if [[ ${#missing[@]} -eq 0 ]]; then
-    echo "--> all packages already installed"
-    exit 0
+if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "--> installing ${#missing[@]} package(s) from the official repos:"
+    printf '    %s\n' "${missing[@]}"
+
+    sudo pacman -S --needed --noconfirm "${missing[@]}"
+
+    failed=()
+    for pkg in "${missing[@]}"; do
+        pacman -Qi "$pkg" &>/dev/null || failed+=("$pkg")
+    done
+
+    if [[ ${#failed[@]} -gt 0 ]]; then
+        echo "!!! could not install: ${failed[*]}" >&2
+        echo "!!! check the package name, or drop it from this list." >&2
+        exit 1
+    fi
+else
+    echo "--> all official-repo packages already installed"
 fi
 
-echo "--> installing ${#missing[@]} package(s):"
-printf '    %s\n' "${missing[@]}"
-
-sudo pacman -S --needed --noconfirm "${missing[@]}"
-
-failed=()
-for pkg in "${missing[@]}"; do
-    pacman -Qi "$pkg" &>/dev/null || failed+=("$pkg")
+# --- AUR ---
+# Separate because pacman cannot resolve these. Never fatal: a machine
+# without an AUR helper should still end up with a working desktop.
+aur_missing=()
+for pkg in "${AUR_PACKAGES[@]}"; do
+    pacman -Qi "$pkg" &>/dev/null || aur_missing+=("$pkg")
 done
 
-if [[ ${#failed[@]} -gt 0 ]]; then
-    echo "!!! could not install: ${failed[*]}" >&2
-    echo "!!! check the package name, or drop it from this list." >&2
-    exit 1
+if [[ ${#aur_missing[@]} -eq 0 ]]; then
+    echo "--> all AUR packages already installed"
+elif command -v yay &>/dev/null; then
+    echo "--> installing AUR package(s): ${aur_missing[*]}"
+    yay -S --needed --noconfirm "${aur_missing[@]}" || \
+        echo ">>> yay failed for: ${aur_missing[*]} (continuing)" >&2
+elif command -v paru &>/dev/null; then
+    echo "--> installing AUR package(s): ${aur_missing[*]}"
+    paru -S --needed --noconfirm "${aur_missing[@]}" || \
+        echo ">>> paru failed for: ${aur_missing[*]} (continuing)" >&2
+else
+    echo ">>> AUR packages need installing: ${aur_missing[*]}" >&2
+    echo ">>> no AUR helper found. Install yay or paru, then re-run:" >&2
+    echo ">>>     sudo pacman -S --needed ${aur_missing[*]}" >&2
 fi
 
 echo "--> package install complete"

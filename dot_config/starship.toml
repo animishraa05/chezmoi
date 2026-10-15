@@ -13,7 +13,7 @@ truncate_to_repo = true
 style = "bold white"
 
 [git_branch]
-format = " [$symbol$branch]($style)"
+format = " [$branch]($style)"
 style = "bold black"
 truncation_length = 12
 

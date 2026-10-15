@@ -49,6 +49,7 @@ require("blink.cmp").setup {
     default = { "lsp", "path", "buffer", "snippets" },
     per_filetype = {
       sql = { "lsp", "path", "buffer", "snippets", "dadbod" },
+      markdown = { "obsidian", "obsidian_new", "obsidian_tags", "lsp", "path", "buffer", "snippets" },
     },
     min_keyword_length = function(ctx)
       if vim.tbl_contains({ "markdown", "text" }, vim.bo.filetype) then
@@ -61,6 +62,18 @@ require("blink.cmp").setup {
         name = "Dadbod",
         module = "custom.blink-dadbod",
         enabled = function() return vim.bo.filetype == "sql" end,
+      },
+      obsidian = {
+        name = "obsidian",
+        module = "blink.compat.source",
+      },
+      obsidian_new = {
+        name = "obsidian_new",
+        module = "blink.compat.source",
+      },
+      obsidian_tags = {
+        name = "obsidian_tags",
+        module = "blink.compat.source",
       },
       buffer = {
         max_items = 5,

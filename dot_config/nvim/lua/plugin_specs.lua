@@ -25,6 +25,7 @@ local plugin_specs = {
     dependencies = {
       { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
       "saghen/blink.lib",
+      "saghen/blink.compat",
     },
     config = function()
       require("config.blink-cmp")
@@ -37,6 +38,16 @@ local plugin_specs = {
     event = "InsertEnter",
     config = function()
       require("supermaven-nvim").setup {}
+    end,
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("config.codecompanion")
     end,
   },
   {
@@ -114,25 +125,21 @@ local plugin_specs = {
     end,
   },
 
-  -- Main markdown syntax and feature plugin
-  {
-    "gabrielelana/vim-markdown",
-    dependencies = {
-      "godlygeek/tabular",
-    },
-    init = function()
-      vim.g.markdown_enable_folding = 1
-      vim.g.markdown_enable_conceal = 1
-    end,
-    ft = { "markdown" },
-  },
   {
     "epwalsh/obsidian.nvim",
     version = "*",
     lazy = true,
+    cmd = {
+      "ObsidianOpen",
+      "ObsidianNew",
+      "ObsidianSearch",
+      "ObsidianToday",
+      "ObsidianQuickSwitch",
+      "ObsidianTags",
+    },
     event = {
-      "BufReadPre /home/ani/notes/**.md",
-      "BufNewFile /home/ani/notes/**.md",
+      "BufReadPre /home/ani/blog/content/**.md",
+      "BufNewFile /home/ani/blog/content/**.md",
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -141,8 +148,19 @@ local plugin_specs = {
       workspaces = {
         {
           name = "notes",
-          path = "/home/ani/notes",
+          path = "/home/ani/blog/content",
         },
+      },
+      daily_notes = {
+        folder = "Private/Daily",
+        date_format = "%Y-%m-%d",
+        alias_format = "%B %-d, %Y",
+        template = "template.md",
+      },
+      templates = {
+        folder = "Private/templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
       },
     },
   },
@@ -153,13 +171,23 @@ local plugin_specs = {
     opts = {},
   },
   {
+    "blackhat-7/vellum.nvim",
+    ft = "markdown",
+    keys = {
+      { "<leader>mp", "<cmd>Vellum<cr>", desc = "Markdown preview" },
+      { "<leader>mz", function() require("vellum").zoom() end, desc = "Vellum zoom" },
+    },
+    opts = {},
+  },
+  {
     "dkarter/bullets.vim",
     ft = { "markdown" },
     init = function()
       vim.g.bullets_enabled_file_types = { "markdown" }
     end,
   },
-  -- Colorschemes — 5 favorites
+  -- Colorschemes
+  { "vague-theme/vague.nvim", lazy = true },
   { "sainnhe/gruvbox-material", lazy = true },
   { "sainnhe/everforest", lazy = true },
   { "catppuccin/nvim", name = "catppuccin", lazy = true },
@@ -308,64 +336,7 @@ local plugin_specs = {
       require("config.which-key")
     end,
   },
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    opts = {
-      input = {
-        enabled = true,
-        win = {
-          relative = "cursor",
-          backdrop = true,
-        },
-      },
-      picker = { enabled = true },
-      dashboard = { enabled = true },
-      animate = { enabled = true },
-      scroll = { enabled = true },
-      indent = { enabled = true },
-      zen = { enabled = true },
-      notifier = { enabled = true },
-      lazygit = { enabled = true },
-      quickfile = { enabled = true },
-      bigfile = { enabled = true },
-      explorer = { enabled = true },
-      image = { enabled = true },
-      git = { enabled = true },
-      gitbrowse = { enabled = true },
-    },
-    keys = {
-      { "<leader>z",  function() Snacks.zen() end,              desc = "Zen Mode" },
-      { "<leader>gl", function() Snacks.lazygit() end,          desc = "Lazygit" },
-      { "<leader>gB", function() Snacks.gitbrowse() end,        desc = "Git Browse" },
-      { "<leader>nd", function() Snacks.notifier.hide() end,    desc = "Dismiss notifications" },
-      { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification history" },
-    },
-  },
 
-  -- Redesigned command line, search, and notification UI
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    config = function()
-      require("noice").setup({
-        lsp = {
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-          },
-        },
-        presets = {
-          bottom_search = true,
-          command_palette = true,
-          long_message_to_split = true,
-          lsp_doc_border = true,
-        },
-      })
-    end,
-  },
 
   -- Lightning-fast navigation
   {
@@ -558,6 +529,38 @@ local plugin_specs = {
         lsp_manager = "Configuring LSP",
         vcs = "Committing changes in {}",
         workspace = "In {}",
+      },
+    },
+  },
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "echasnovski/mini.icons" },
+    opts = {},
+    keys = {
+      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find Files" },
+      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+      { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help Tags" },
+      { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
+      { "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps Cheatsheet" },
+    },
+  },
+  {
+    -- oil.nvim is the default dashboard now (see lua/custom-autocmd.lua).
+    -- mini.starter stays available as a manually-opened palette (<leader>ss).
+    "echasnovski/mini.starter",
+    version = false,
+    init = function()
+      vim.g.ministarter_disable_autostart = true
+    end,
+    opts = {},
+    keys = {
+      {
+        "<leader>ss",
+        function()
+          require("mini.starter").open()
+        end,
+        desc = "open mini.starter palette",
       },
     },
   },
