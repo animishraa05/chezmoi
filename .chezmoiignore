@@ -1,7 +1,11 @@
 # qutebrowser: nested git repo - tracked in animishraa05/qutebrowser-config
+# (kept ignored even though the config itself is no longer managed by chezmoi,
+#  so a stray `chezmoi add` cannot sweep the nested .git back in)
 .config/qutebrowser/.git/**
 .config/qutebrowser/.env
-**/__pycache__/**
+
+__pycache__/**
+*.py[cod]
 
 # Repo documentation, not a file to deploy into $HOME.
 # Without this, chezmoi treats it as a target and wants to write ~/README.md
@@ -11,3 +15,25 @@ README.md
 # chezmoi's dot-prefix parsing and produce a bogus source tree.
 .config/nvim/oil:*
 **/oil:/**
+
+# Zen (Firefox-based) browser profile.
+#
+# Only user.js is managed: it holds preferences that survive restarts and is
+# never rewritten by the browser, so it does not drift.
+#
+# Everything else in a profile is deliberately NOT managed:
+#   logins.json / key4.db / cert9.db   - credentials and keys, never commit
+#   cookies.sqlite / places.sqlite     - browsing history
+#   sessionstore*, storage/, cache2/    - session and cache (~1.9 GB)
+#   prefs.js                           - rewritten by Zen on every shutdown
+#   profiles.ini / installs.ini        - contain a machine-specific profile id
+#
+# Syncing any of those would leak passwords into a public repo, or cause
+# pointless drift on every launch.
+#
+# The trailing-slash re-includes are needed so chezmoi can descend to
+# user.js; the blanket ignore would otherwise stop it at the profile dir.
+.config/zen/**
+!.config/zen/*/
+!.config/zen/**/
+!.config/zen/**/user.js
