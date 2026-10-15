@@ -36,11 +36,13 @@ c.tabs.favicons.scale = 1.0
 c.tabs.background = True
 
 # User agent
-config.set(
-    "content.headers.user_agent",
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.3 Firefox/121",
-    "*",
-)
+#
+# Deliberately left at qutebrowser's default. The default is assembled from the
+# running engine ({upstream_browser_version_short} -> Chrome/<major>), so it
+# always agrees with QtWebEngine and no longer advertises QtWebEngine either
+# (changed in v3.5.0). A hardcoded UA is a fingerprint mismatch: Google refused
+# Google sign-in because the config claimed Chrome/120 while the engine was
+# Chromium 140. Don't set this unless you have a specific reason to.
 
 # Dark mode
 config.set("colors.webpage.darkmode.enabled", getattr(var, "darkmode"))
