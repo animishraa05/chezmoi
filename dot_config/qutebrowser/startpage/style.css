@@ -1,0 +1,165 @@
+:root {
+    --color-bg: #141415;
+    --color-fg: #cdcdcd;
+    --color-link: #878787;
+    --color-link-visited: #606079;
+    --color-link-hover: #f3be7c;
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: "JetBrainsMono Nerd Font Mono", monospace;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 460px 600px 1fr;
+  grid-template-areas:
+    ". left right .";
+  column-gap: 80px;
+  justify-items: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+.left-container {
+  grid-area: left;
+  aspect-ratio: 1/1;
+}
+
+.right-container {
+  grid-area: right;
+  height: 50%;
+  width: 100%;
+}
+
+.gif img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 40px;
+  padding-top: 60px;
+}
+
+/* --- Google search box --- */
+.search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+
+.search form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid #252530;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.search input[type="text"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-fg);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 12px 14px;
+}
+
+.search input[type="text"]::placeholder {
+  color: #606079;
+}
+
+.search form:focus-within {
+  border-color: #7e98e8;
+}
+
+.search button {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #7e98e8;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 12px 14px;
+}
+
+.search button:hover {
+  color: #f3be7c;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+
+.bookmarks {
+  display: flex;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+li {
+  font-size: 16px;
+  list-style-type: none;
+  padding: 5px
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+.blinking {
+  animation: opacity 1s ease-in-out infinite;
+  opacity: 1;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -138,7 +138,6 @@ c.url.searchengines = {
     "am": "https://amazon.com/s?k={}",
     "aw": "https://wiki.archlinux.org/?search={}",
     "bn": "https://bing.com/search?q={}",
-    "dd": "https://duckduckgo.com/?q={}",
     "gh": "https://github.com/search?q={}",
     "gg": "https://google.com/search?q={}",
     "gho": "https://github.com/{}",
