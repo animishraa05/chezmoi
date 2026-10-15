@@ -65,6 +65,30 @@ Leader is `<space>`.
 | `<Ctrl-Shift-=>` / `<Ctrl-Shift-->` | zoom in / out |
 | `<Ctrl-Shift-Backspace>` | reset zoom |
 
+### Splitting
+
+qutebrowser has no native split panes. Instead the current page is cloned into
+a new window and your window manager tiles it, so a split is two coordinated
+windows rather than two panes in one.
+
+| Key | Action |
+| --- | --- |
+| `<space>-` | clone current page into a new window (tiled beside the current one) |
+| `mod+h` / `mod+l` | move focus to the left / right window |
+| `mod+z` / `mod+shift+v` | change the split orientation |
+
+To remove one side without losing the page, merge it back instead of closing
+it:
+
+| Key | Action |
+| --- | --- |
+| `<space>w` | pull a tab from another window into this one |
+| `<space>W` | send this tab to another window |
+
+So: focus the window you want to keep, press `<space>w`, pick the tab, then
+`<space>Q` on the window you just emptied. The window manager refills the space
+automatically.
+
 | Leader | Action |
 | --- | --- |
 | `<space> b` / `<space> B` | toggle status bar / tab bar |

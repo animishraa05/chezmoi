@@ -187,6 +187,8 @@ config.bind(
     getattr(var, "leader") + "A",
     "open -t https://github.com/" + getattr(var, "username") + "/",
 )
+# Split: clone current page into a new window. i3 tiles it side by side.
+config.bind(getattr(var, "leader") + "-", "tab-clone -w")
 config.bind(getattr(var, "leader") + "b", "config-cycle statusbar.show always in-mode")
 config.bind(getattr(var, "leader") + "B", "config-cycle tabs.show multiple switching")
 config.bind(getattr(var, "leader") + "c", "config-edit")
