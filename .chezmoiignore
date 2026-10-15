@@ -2,3 +2,7 @@
 .config/qutebrowser/.git/**
 .config/qutebrowser/.env
 **/__pycache__/**
+
+# Repo documentation, not a file to deploy into $HOME.
+# Without this, chezmoi treats it as a target and wants to write ~/README.md
+README.md
