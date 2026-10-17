@@ -8,3 +8,9 @@ user_pref("layout.css.devPixelsPerPx", "1.4");
 // Start page: the Vague startpage, same file qutebrowser uses.
 user_pref("browser.startup.page", 1);
 user_pref("browser.startup.homepage", "file:///home/ani/.config/startpage/index.html");
+user_pref("dom.ipc.processCount", 2);
+user_pref("fission.autostart", false);
+user_pref("extensions.webextensions.remote", false);
+user_pref("dom.ipc.processCount", 2);
+user_pref("fission.autostart", false);
+user_pref("extensions.webextensions.remote", false);

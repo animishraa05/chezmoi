@@ -8,8 +8,8 @@ UPDATES=$(checkupdates 2>/dev/null | wc -l)
 
 # If there are no updates, I show a green checkmark and a zero. All clear!
 if [ "$UPDATES" -eq 0 ]; then
-    echo " 0"
+    echo " 0"
 # Otherwise, I show a warning icon and the number of pending updates. Time to get to work!
 else
-    echo " ${UPDATES}"
+    echo " ${UPDATES}"
 fi

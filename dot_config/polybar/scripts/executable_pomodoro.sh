@@ -137,7 +137,7 @@ if [ "$CURRENT_STATE" = "work" ]; then
         rm -f "$LOG_LOCK"
         REMAINING_TIME=$CHILL_DURATION
         CURRENT_STATE="chill"
-        dunstify -u critical "Pomodoro" "Work session is over! Time to chill."
+        dunstify -u critical "Pomodoro" "Work is done, now chill."
         play_sound "$SOUND_FILE"
     fi
 elif [ "$CURRENT_STATE" = "chill" ]; then
@@ -148,7 +148,7 @@ elif [ "$CURRENT_STATE" = "chill" ]; then
         rm -f "$LOG_LOCK"
         REMAINING_TIME=$WORK_DURATION
         CURRENT_STATE="work"
-        dunstify -u critical "Pomodoro" "Chill session is over! Time to get back to work."
+        dunstify -u critical "Pomodoro" "Chill done, get back to work."
         play_sound "$SOUND_FILE"
     fi
 fi

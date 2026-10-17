@@ -12,5 +12,7 @@ include ~/.config/i3/windowrules.conf
 
 include ~/.config/i3/autostart.conf
 focus_follows_mouse yes
+exec --no-startup-id xinput set-prop "DELL0A36:00 06CB:CE65 Touchpad" "libinput Tapping Enabled" 1
 focus_wrapping yes
 exec --no-startup-id env XDG_CURRENT_DESKTOP=i3
+
