@@ -10,10 +10,14 @@ if status is-interactive
     alias ....='cd ../../..'
 
     # ls
-    alias l='eza -la' # eza is a modern ls replacement
-    alias ll='eza -l'
-    alias la='eza -a'
-    alias lt='eza --tree'
+    # All go through eza so Nerd Font icons show. --icons=auto renders icons
+    # only when stdout is a TTY, so pipes/scripts still get clean output.
+    # Escape hatch for scripts needing real GNU ls output: /usr/bin/ls or env ls
+    alias ls='eza --icons=auto --group-directories-first'
+    alias l='eza -la --icons=auto --group-directories-first'
+    alias ll='eza -l --icons=auto --group-directories-first'
+    alias la='eza -a --icons=auto --group-directories-first'
+    alias lt='eza --tree --icons=auto --group-directories-first'
 
     # git
     alias g='git'
