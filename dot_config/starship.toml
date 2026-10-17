@@ -1,5 +1,5 @@
 # Starship config - minimal & fast
-command_timeout = 300
+command_timeout = 1000
 
 format = """
 $directory\
@@ -14,7 +14,7 @@ style = "bold white"
 
 [git_branch]
 format = " [$branch]($style)"
-style = "bold black"
+style = "bold cyan"
 truncation_length = 12
 
 [git_status]
@@ -29,12 +29,12 @@ renamed = "➡${count}"
 untracked = "?${count}"
 ignore_submodules = true
 format = " [\\($all_status$ahead_behind\\)]($style)"
-style = "bold black"
+style = "bold yellow"
 disabled = false
 
 [character]
 success_symbol = "[❯](bold white)"
-error_symbol = "[❯](bold black)"
+error_symbol = "[❯](bold red)"
 
 # Disable slow/unused modules
 [aws]
