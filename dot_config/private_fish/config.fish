@@ -26,6 +26,14 @@ if status is-interactive
     alias gco='git checkout'
     alias gb='git branch'
 
+    # chezmoi — dotfiles sync
+    # dotup   : capture changes made in $HOME, then auto commit + push to origin
+    # dotpull : pull origin and apply to $HOME
+    # dotstat : what has drifted (col 2 = what `chezmoi apply` would do)
+    alias dotup='chezmoi re-add'
+    alias dotpull='chezmoi update'
+    alias dotstat='chezmoi status'
+
     # safety
     alias rm='rm -i'
     alias cp='cp -i'
